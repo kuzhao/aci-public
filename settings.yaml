@@ -8,13 +8,13 @@ models:
   default_chat_model:
     type: azure_openai_chat # or azure_openai_chat
     api_base: ${GRAPHRAG_API_BASE}
-    api_version: '2024-06-01'
+    api_version: '2024-10-21'
     auth_type: api_key # or azure_managed_identity
     api_key: ${GRAPHRAG_API_KEY} # set this in the generated .env file
     # audience: "https://cognitiveservices.azure.com/.default"
     # organization: <organization_id>
-    model: gpt-4o
-    deployment_name: gpt-4o
+    model: gpt-4.1-mini
+    deployment_name: gpt-4.1-mini
     # encoding_model: cl100k_base # automatically set by tiktoken if left undefined
     model_supports_json: true # recommended if this is available for your model.
     concurrent_requests: 5 # max number of simultaneous LLM requests allowed
@@ -26,7 +26,7 @@ models:
   default_embedding_model:
     type: azure_openai_embedding # or azure_openai_embedding
     api_base: ${GRAPHRAG_API_BASE}
-    api_version: '2024-06-01'
+    api_version: '2024-10-21'
     auth_type: api_key # or azure_managed_identity
     api_key: ${GRAPHRAG_API_KEY}
     # audience: "https://cognitiveservices.azure.com/.default"
@@ -39,8 +39,8 @@ models:
     async_mode: threaded # or asyncio
     retry_strategy: native
     max_retries: 3                   # set to -1 for dynamic retry logic (most optimal setting based on server response)
-    tokens_per_minute: 350000              # set to 0 to disable rate limiting
-    requests_per_minute: 2100            # set to 0 to disable rate limiting
+    tokens_per_minute: 120000              # set to 0 to disable rate limiting
+    requests_per_minute: 700            # set to 0 to disable rate limiting
 
 vector_store:
   default_vector_store:
